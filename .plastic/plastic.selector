@@ -1,0 +1,4 @@
+repository "DoDrug@tj_fxjf2314@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
