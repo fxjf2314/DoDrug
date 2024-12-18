@@ -12,11 +12,13 @@ public class PickUp : MonoBehaviour
     Transform handObj;
     bool handEmpty;
     public GameObject pickUI;
-    //TextMeshPro picktmp;
+    public Vector3 handPos;
+    //
+    Outline outline;
 
     private void Awake()
     {
-        pickUI.SetActive(true);
+        
         pickUI.SetActive(false);
     }
 
@@ -25,16 +27,17 @@ public class PickUp : MonoBehaviour
         pickObj = null;
         handObj = null;
         handEmpty = true;
-        //picktmp = pickUI.GetComponent<TextMeshPro>();
+        
     }
 
-    //检测面前是否有物体，有则弹出拾取提示
+    //检测面前是否有物体，有则弹出拾取提示,开启描边
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PickObj"))
         {
             pickObj = other.GetComponent<Transform>();
-            //picktmp.enabled = true;
+            outline = other.GetComponent<Outline>();
+            outline.enabled = true;
             pickUI.SetActive(true);
         }
     }
@@ -44,7 +47,11 @@ public class PickUp : MonoBehaviour
         if (other.CompareTag("PickObj"))
         {
             pickObj = null;
-            //picktmp.enabled = false;
+            if(outline != null)
+            {
+                outline.enabled = false;
+                outline = null;
+            }
             pickUI.SetActive(false);
         }
     }
@@ -60,8 +67,13 @@ public class PickUp : MonoBehaviour
             //设置transform参数确保手中物品角度正确不挡视野
             handObj.SetParent(Cam.transform);
             handObj.localEulerAngles = Vector3.zero;
-            handObj.localPosition = new Vector3(0.9f, -0.7f, 1);
-            //picktmp.enabled = false;
+            handObj.localPosition = handPos;
+            //关闭描边
+            if (outline != null)
+            {
+                outline.enabled = false;
+                outline = null;
+            }
             pickUI.SetActive(false);
             pickObj = null;
             handEmpty = false;

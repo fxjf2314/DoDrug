@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
             velocity.y += jumpSpeed;            
         }
         cc.Move(velocity * Time.deltaTime);
-        
+        //if(Input.GetButtonDown(""))
     }
 
     private void Update()
