@@ -9,6 +9,11 @@ public class CameraController : MonoBehaviour
     float xRotation;
     public Transform player;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.visible = false;
+    }
 
     private void Update()
     {

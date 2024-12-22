@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Bjm : MonoBehaviour
+public class Bgm : MonoBehaviour
 {
     public Slider slider;
     public AudioSource backgroundMusic;
 
-    private static Bjm instance;
+    private static Bgm instance;
 
     private void Awake()
     {

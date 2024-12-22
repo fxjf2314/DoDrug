@@ -10,30 +10,38 @@ public class StatusListener : Listener//µñÏñ¼àÌý
     public TextMeshProUGUI tips;
     protected override void Start()
     {
-        somethingScript = GameObject.Find("PickCollider").GetComponent<Interactive>();
-        pickUpObj = GameObject.Find("PickCollider").GetComponent<PickUp>();
+        base.Start();
+        pickUpObj = objWithInteractive.GetComponent<PickUp>();
+        somethingScript = objWithInteractive.GetComponent<Interactive>();
         somethingScript.eventDoPuzzle += Dosomething;
     }
 
     protected override void Dosomething()
     {
-
-        handObjs = pickUpObj.handObj.gameObject;
-        Transform childrenObject = transform.Find("statue");
-        if (childrenObject != null)
+        if(pickUpObj.handObj != null)
         {
-            Transform grandChildrenObject = childrenObject.Find(handObjs.name);
-            if (grandChildrenObject != null)
+            handObjs = pickUpObj.handObj.gameObject;
+            Transform childrenObject = transform.Find("statue");
+            if (childrenObject != null)
             {
-                GameObject isStatue = grandChildrenObject.gameObject;
-                Destroy(pickUpObj.handObj.gameObject);
-                isStatue.SetActive(true);
+                Transform grandChildrenObject = childrenObject.Find(handObjs.name);
+                if (grandChildrenObject != null)
+                {
+                    GameObject isStatue = grandChildrenObject.gameObject;
+                    Destroy(pickUpObj.handObj.gameObject);
+                    pickUpObj.handObj = null;
+                    pickUpObj.handEmpty = true;
+                    isStatue.SetActive(true);
 
-            }
-            else
-            {
-                tips.gameObject.SetActive(true);
+                }
+                else
+                {
+                    tips.gameObject.SetActive(true);
+                }
             }
         }
+       
+
+        
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SceneTrigger : MonoBehaviour
 {
     public TextMeshProUGUI Triggertext;
-    
+
     Color color;
 
 
