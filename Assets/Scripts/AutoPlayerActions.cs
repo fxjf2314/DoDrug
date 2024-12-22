@@ -3,94 +3,75 @@ using UnityEngine;
 
 public class AutoPlayerActions : MonoBehaviour
 {
-    public float moveSpeed = 10f;
-    public float shakeIntensity = 0.1f;
-    public float shakeDuration = 0.5f;
-    public float fallSpeed = 1f;
-    public float getUpSpeed = 1f;
-    public float shakeFrequency = 0.5f;
+    public float shakeIntensity = 3f; // 摄像机震动强度
+    public float shakeDuration = 1.5f; // 摄像机震动持续时间
+    public float fallSpeed = 1f; // 玩家倒下速度
+    public float getUpSpeed = 1f; // 玩家站起速度
+    public float shakeFrequency = 10f; // 摄像机震动频率
 
-    private Rigidbody rb;
     private Camera playerCamera;
     private Vector3 cameraOffset;
     private bool isFallen = false;
-    private bool allowInput = false; // 控制输入处理的标志
+
+    private PlayerController playerController; // 引用 PlayerController
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
-        playerCamera.transform.SetParent(this.transform); // 将摄像机设为玩家的子对象
-        cameraOffset = playerCamera.transform.localPosition; // 记录初始相对偏移
+        playerController = GetComponent<PlayerController>();
+
+        if (playerCamera == null)
+        {
+            Debug.LogError("主摄像机未找到，请确保场景中有一个主摄像机。");
+            return;
+        }
+
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController 未找到，请确保该脚本挂载到玩家对象上。");
+            return;
+        }
+
+        cameraOffset = playerCamera.transform.localPosition;
 
         StartCoroutine(AutoSequence());
     }
 
     void Update()
     {
-        if (allowInput && !isFallen)
+        if (playerController != null && !playerController.enabled)
         {
-            ProcessInput();
+            // 玩家输入被禁用时执行必要的停止逻辑
         }
-    }
-
-    void ProcessInput()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
-        rb.velocity = new Vector3(direction.x * moveSpeed, rb.velocity.y, direction.z * moveSpeed);
     }
 
     IEnumerator AutoSequence()
     {
-        Debug.Log("开始协程");
-        Debug.Log("禁用键盘");
-        // 禁用输入
-        allowInput = false;
-
-        StartCoroutine(MovePlayer());
-        yield return new WaitForSeconds(0.5f);
-
+        GetComponent<PlayerController>().finalMoveSpeed = 0;
+        transform.Find("Main Camera").GetComponent<CameraController>().mouseSensitivity = 0;
+        DisablePlayerControl();
         yield return StartCoroutine(ShakeCamera());
-        yield return new WaitForSeconds(shakeDuration);
-
-        Debug.Log("开始倒下");
         yield return StartCoroutine(FallDown());
-
-        Debug.Log("开始起立");
         yield return StartCoroutine(GetUp());
-
-        // 启用输入
-        allowInput = true;
-        Debug.Log("取消禁用");
-    }
-
-    IEnumerator MovePlayer()
-    {
-        Vector3 moveDirection = new Vector3(1, 0, 0).normalized;
-
-        while (!isFallen)
-        {
-            rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
-            yield return null;
-        }
+        EnablePlayerControl();
+        GetComponent<PlayerController>().finalMoveSpeed = 4;
+        transform.Find("Main Camera").GetComponent<CameraController>().mouseSensitivity = 500;
     }
 
     IEnumerator ShakeCamera()
     {
         Vector3 originalPos = playerCamera.transform.localPosition;
-        float shakeTime = 0f;
+        float elapsedTime = 0f;
+        float updateInterval = 1f / shakeFrequency;
 
-        while (shakeTime < shakeDuration)
+        while (elapsedTime < shakeDuration)
         {
-            float currentShakeAmount = shakeIntensity * (1 - (shakeTime / shakeDuration));
+            float currentShakeAmount = shakeIntensity * (1 - (elapsedTime / shakeDuration));
             Vector3 randomPoint = originalPos + Random.insideUnitSphere * currentShakeAmount;
-            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, randomPoint, Time.deltaTime * shakeFrequency);
+            playerCamera.transform.localPosition = randomPoint;
 
-            shakeTime += Time.deltaTime;
-            yield return null;
+            yield return new WaitForSeconds(updateInterval);
+            elapsedTime += updateInterval;
         }
 
         playerCamera.transform.localPosition = originalPos;
@@ -99,8 +80,8 @@ public class AutoPlayerActions : MonoBehaviour
     IEnumerator FallDown()
     {
         isFallen = true;
-        Vector3 fallPosition = cameraOffset + new Vector3(0, -2, 0);
-        float threshold = 0.01f; // 添加一个小的偏差值
+        Vector3 fallPosition = cameraOffset + new Vector3(0, -1.5f, 0);
+        float threshold = 0.01f;
 
         while ((playerCamera.transform.localPosition - fallPosition).sqrMagnitude > threshold * threshold)
         {
@@ -109,13 +90,12 @@ public class AutoPlayerActions : MonoBehaviour
         }
 
         playerCamera.transform.localPosition = fallPosition;
-        Debug.Log("Falllllllllll");
     }
 
     IEnumerator GetUp()
     {
         Vector3 standPosition = cameraOffset;
-        float threshold = 0.01f; // 添加一个小的偏差值
+        float threshold = 0.01f;
 
         while ((playerCamera.transform.localPosition - standPosition).sqrMagnitude > threshold * threshold)
         {
@@ -125,6 +105,21 @@ public class AutoPlayerActions : MonoBehaviour
 
         playerCamera.transform.localPosition = standPosition;
         isFallen = false;
-        Debug.Log("getuuuuuuuuuuup!");
+    }
+
+    void DisablePlayerControl()
+    {
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+    }
+
+    void EnablePlayerControl()
+    {
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
     }
 }
