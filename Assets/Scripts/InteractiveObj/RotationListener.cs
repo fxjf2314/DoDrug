@@ -3,23 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Listener : MonoBehaviour
+public class RotationListener : Listener
 {
-    private Interactive rotateScript;
+    
     public float duration = 1.0f; // 旋转持续时间，单位秒
     private float rotationAngle = 90.0f; // 每次旋转的角度
     private float totalRotation = 180.0f; // 累积的总旋转角度
 
-    private void Start()
+    protected override void Start()
     {
-        rotateScript = GameObject.Find("PickCollider").GetComponent<Interactive>();
-
-        rotateScript.eventRotateWall += RotateOnce;
+        somethingScript = GameObject.Find("PickCollider").GetComponent<Interactive>();
+        somethingScript.eventRotateWall += Dosomething;
     }
 
     
 
-    public void RotateOnce()
+    protected override void Dosomething()
     {
         // 调用旋转方法，每次旋转后更新总旋转角度
         RotateAroundYAxis(totalRotation, duration);
