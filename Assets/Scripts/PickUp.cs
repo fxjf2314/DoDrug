@@ -63,6 +63,7 @@ public class PickUp : MonoBehaviour
         {
             if (!handEmpty) handObj.gameObject.SetActive(false);
             handObj = pickObj;
+            pickObj.GetComponent<ItemOnWorld>().AddNewItem();
             handObj.gameObject.layer = LayerMask.NameToLayer("Player");
             //设置transform参数确保手中物品角度正确不挡视野
             handObj.SetParent(Cam.transform);

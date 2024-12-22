@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType {diary,flashlight,clue};
+public enum ItemType {diary,clue};
 [CreateAssetMenu(fileName ="New Item",menuName ="Bag/New Item")]
 public class Item : ScriptableObject
 {

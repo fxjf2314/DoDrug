@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\develop\\unity\\DoDrug\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|e:\\develop\\unity\\dodrug\\assets\\scripts\\pickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|e:\\develop\\unity\\dodrug\\assets\\scripts\\bagmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bagmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|e:\\develop\\unity\\dodrug\\assets\\scripts\\openbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\openbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|e:\\develop\\unity\\dodrug\\assets\\scripts\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|e:\\develop\\unity\\dodrug\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PickUp.cs",
+              "DocumentMoniker": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\PickUp.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PickUp.cs",
+              "ToolTip": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\PickUp.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PickUp.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T14:00:12.139Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BagManager.cs",
+              "DocumentMoniker": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\BagManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BagManager.cs",
+              "ToolTip": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\BagManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BagManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T14:05:14.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Item.cs",
+              "DocumentMoniker": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\Item.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Item.cs",
+              "ToolTip": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\Item.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Item.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T13:58:10.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OpenBag.cs",
+              "DocumentMoniker": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\OpenBag.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\OpenBag.cs",
+              "ToolTip": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\OpenBag.cs",
+              "RelativeToolTip": "Assets\\Scripts\\OpenBag.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T13:52:28.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "E:\\develop\\unity\\DoDrug\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T13:07:52.762Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
