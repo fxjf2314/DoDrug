@@ -6,16 +6,18 @@ public class Interactive : MonoBehaviour
 {
     public delegate void InteractiveEventDelegate();
     public InteractiveEventDelegate eventRotateWall;
+    public InteractiveEventDelegate eventDoPuzzle;
     public InteractiveEventDelegate eventTurnOnLight;
     public GameObject pickUI;
     Outline outline;
     bool isKeyDown;
     public Transform rotateWall;
 
+    public PickUp PickUpObj;
     private GameObject interactiveObj;
     private void Awake()
     {
-        
+        PickUpObj = GetComponent<PickUp>();
         pickUI.SetActive(false);
     }
 
@@ -26,8 +28,8 @@ public class Interactive : MonoBehaviour
     {
         if (other.CompareTag("InteractiveObj"))
         {
-            /*outline = other.GetComponent<Outline>();
-            outline.enabled = true;*/
+            outline = other.GetComponent<Outline>();
+            outline.enabled = true;
             //pickObj = other.GetComponent<Transform>();
             //picktmp.enabled = true;
             interactiveObj = other.gameObject;
@@ -39,11 +41,11 @@ public class Interactive : MonoBehaviour
     {
         if (other.CompareTag("InteractiveObj"))
         {
-            /*if (outline != null)
+            if (outline != null)
             {
                 outline.enabled = false;
                 outline = null;
-            }*/
+            }
             //pickObj = null;
             //picktmp.enabled = false;
             interactiveObj = null;
@@ -58,6 +60,10 @@ public class Interactive : MonoBehaviour
             if(interactiveObj.name == "StudioLight")
             {
                 eventTurnOnLight?.Invoke();
+            }
+            if (interactiveObj.name == "StatuePos" && PickUpObj.handObj != null)
+            {
+                eventDoPuzzle?.Invoke();
             }
             eventRotateWall?.Invoke();
         }

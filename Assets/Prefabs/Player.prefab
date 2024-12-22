@@ -33,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 1587270351952296164}
   - {fileID: 8394990847689819597}
+  - {fileID: 517291338225778205}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7644479082768335313
@@ -76,11 +77,15 @@ MonoBehaviour:
   moveSpeed: 4
   jumpSpeed: 5
   groundCheck: {fileID: 8394990847689819597}
-  checkRadius: 0.2
+  checkGroundRadius: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   gravity: 9.8
+  headCheck: {fileID: 0}
+  crouchHeight: 0
+  crouchTime: 0
+  mainCam: {fileID: 0}
 --- !u!1 &2596744085221903436
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +178,59 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2596744085221903436}
   m_Enabled: 1
+--- !u!1 &2598139322417132840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517291338225778205}
+  - component: {fileID: 8791867533171839310}
+  m_Layer: 3
+  m_Name: Head Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517291338225778205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598139322417132840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4153546629853247263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8791867533171839310
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598139322417132840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 0.5, z: 0.8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4651497681883230732
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,9 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cam: {fileID: 5416558044739350174}
   pickUI: {fileID: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  handPos: {x: 0, y: 0, z: 0}
 --- !u!1 &6666645492862348681
 GameObject:
   m_ObjectHideFlags: 0

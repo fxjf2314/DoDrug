@@ -8,8 +8,8 @@ public class PickUp : MonoBehaviour
 {
     //视角摄像机及物品拾取
     public Camera Cam;
-    Transform pickObj;
-    Transform handObj;
+    public Transform pickObj;
+    public Transform handObj;
     bool handEmpty;
     public GameObject pickUI;
     public Vector3 handPos;
