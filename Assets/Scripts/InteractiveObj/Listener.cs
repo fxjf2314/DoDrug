@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class Listener : MonoBehaviour
 {
     protected Interactive somethingScript;
-
+    protected GameObject objWithInteractive;
     protected virtual void Start()
     {
-        
+        objWithInteractive = GameObject.Find("Main Camera");
 
         
     }

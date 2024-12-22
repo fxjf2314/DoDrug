@@ -12,7 +12,8 @@ public class RotationListener : Listener
 
     protected override void Start()
     {
-        somethingScript = GameObject.Find("PickCollider").GetComponent<Interactive>();
+        base.Start();
+        somethingScript = objWithInteractive.GetComponent<Interactive>();
         somethingScript.eventRotateWall += Dosomething;
     }
 

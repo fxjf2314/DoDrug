@@ -1,65 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class Interactive : MonoBehaviour
+public class Interactive : PickAndInteractiveFather
 {
     public delegate void InteractiveEventDelegate();
     public InteractiveEventDelegate eventRotateWall;
     public InteractiveEventDelegate eventTurnOnLight;
-    public GameObject pickUI;
-    Outline outline;
-    bool isKeyDown;
     public Transform rotateWall;
-
+    PickUp pickUpScipt;
     private GameObject interactiveObj;
-    private void Awake()
-    {
-        
-        pickUI.SetActive(false);
-    }
 
     
-
-    //检测面前是否有物体，有则弹出互动提示
-    private void OnTriggerEnter(Collider other)
+    protected override void Awake()
     {
-        if (other.CompareTag("InteractiveObj"))
-        {
-            /*outline = other.GetComponent<Outline>();
-            outline.enabled = true;*/
-            //pickObj = other.GetComponent<Transform>();
-            //picktmp.enabled = true;
-            interactiveObj = other.gameObject;
-            pickUI.SetActive(true);
-        }
+        tagName = "InteractiveObj";
+        pickUpScipt = transform.GetComponent<PickUp>();
+        base.Awake();
+
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("InteractiveObj"))
+        GetPickObj();
+        if (Input.GetKeyDown(KeyCode.G) && pickObj != null)
         {
-            /*if (outline != null)
-            {
-                outline.enabled = false;
-                outline = null;
-            }*/
-            //pickObj = null;
-            //picktmp.enabled = false;
-            interactiveObj = null;
-            pickUI.SetActive(false);
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G) && pickUI.activeSelf)
-        {
-            if(interactiveObj.name == "StudioLight")
+            if(pickObj.name == "StudioLight")
             {
                 eventTurnOnLight?.Invoke();
             }
-            eventRotateWall?.Invoke();
         }
     }
 
