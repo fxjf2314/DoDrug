@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ItemOnWorld : MonoBehaviour
@@ -16,7 +17,7 @@ public class ItemOnWorld : MonoBehaviour
         if (!mybag.items.Contains(thisItem))
         {
             mybag.items.Add(thisItem);
-            BagManager.CreateItem(thisItem);
+            BagManager.CreateItem(thisItem, gameObject.transform);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ public class Interactive : PickAndInteractiveFather
     public InteractiveEventDelegate eventTurnOnLight;
     public Transform rotateWall;
 
-   
+    public Bag myBag;
 
 
-    
+
     protected override void Awake()
     {
 
@@ -30,7 +31,6 @@ public class Interactive : PickAndInteractiveFather
         GetPickObj();
         if (Input.GetKeyDown(KeyCode.G) && pickObj != null)
         {
-
             if(pickObj.name == "StudioLight")
             {
                 eventTurnOnLight?.Invoke();

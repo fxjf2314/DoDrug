@@ -8,6 +8,7 @@ public class StatusListener : Listener//µñÏñ¼àÌý
     private PickUp pickUpObj;
     private GameObject handObjs;
     public TextMeshProUGUI tips;
+    public Bag myBag;
     protected override void Start()
     {
         base.Start();
@@ -29,8 +30,11 @@ public class StatusListener : Listener//µñÏñ¼àÌý
                 {
                     GameObject isStatue = grandChildrenObject.gameObject;
                     Destroy(pickUpObj.handObj.gameObject);
+                    myBag.items.Remove(pickUpObj.handObj.gameObject.GetComponent<ItemOnWorld>().thisItem);
+                    BagManager.RemoveItemSlot(pickUpObj.handObj.gameObject.GetComponent<ItemOnWorld>().thisItem);
                     pickUpObj.handObj = null;
                     pickUpObj.handEmpty = true;
+                    GetAItem.inHandObj = null;
                     isStatue.SetActive(true);
 
                 }

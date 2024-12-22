@@ -7,10 +7,12 @@ public class Slot : MonoBehaviour
 {
     public Item slotItem;
     public Image slotImage;
+    public Transform slotObj;
     
     public void ItemOnClicked()
     {
         BagManager.UpdateItemInfo(slotItem.itemText);
+        GetAItem.bagObj = slotObj;
     }
 
 }

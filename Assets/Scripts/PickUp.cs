@@ -59,7 +59,7 @@ public class PickUp : PickAndInteractiveFather
     private void Update()
     {
         GetPickObj();
-        
+
         //按f拾取面前物体到手中
         if (Input.GetKeyDown(KeyCode.F) && pickObj != null)
         {
@@ -68,7 +68,8 @@ public class PickUp : PickAndInteractiveFather
                 handObj.gameObject.SetActive(false);
             }
             handObj = pickObj;
-            pickObj.GetComponent<ItemOnWorld>().AddNewItem();
+            GetAItem.inHandObj = handObj;
+            handObj.GetComponent<ItemOnWorld>().AddNewItem();
             handObj.gameObject.layer = LayerMask.NameToLayer("Player");
             //设置transform参数确保手中物品角度正确不挡视野
             handObj.SetParent(Cam.transform);
