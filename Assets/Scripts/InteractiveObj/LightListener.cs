@@ -6,7 +6,8 @@ public class LightListener : Listener
 {
     protected override void Start()
     {
-        somethingScript = GameObject.Find("PickCollider").GetComponent<Interactive>();
+        base.Start();
+        somethingScript = objWithInteractive.GetComponent<Interactive>();
         somethingScript.eventTurnOnLight += Dosomething;
     }
 

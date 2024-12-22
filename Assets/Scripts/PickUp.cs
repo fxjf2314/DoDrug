@@ -4,26 +4,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickUp : MonoBehaviour
+public class PickUp : PickAndInteractiveFather
 {
     //视角摄像机及物品拾取
-    public Camera Cam;
+    
     //面前可拾取的物品和手中物品
-    Transform pickObj;
-    Transform handObj;
+    
     bool handEmpty;
-    public GameObject pickUI;
+   
     public Vector3 handPos;
     //pickObj物体的描边组件
-    Outline outline;
-    [Range(0,10)]
-    public float rayDsitance;
-    Ray pickRay;
-
-    private void Awake()
+    
+    
+    protected override void Awake()
     {
+        tagName = "PickObj";
+        base.Awake();
         
-        pickUI.SetActive(false);
     }
 
     private void Start()
@@ -31,6 +28,8 @@ public class PickUp : MonoBehaviour
         pickObj = null;
         handObj = null;
         handEmpty = true;
+        //设置要忽略的层级
+        
     }
 
     ////检测面前是否有物体，有则弹出拾取提示,开启描边
@@ -62,6 +61,7 @@ public class PickUp : MonoBehaviour
     private void Update()
     {
         GetPickObj();
+        
         //按f拾取面前物体到手中
         if (Input.GetKeyDown(KeyCode.F) && pickObj != null)
         {
@@ -81,12 +81,12 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    void GetPickObj()
+    /*void GetPickObj()
     {
         //从视角发射一条射线
-        pickRay = Camera.main.ScreenPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
-        RaycastHit hit;
-        if(Physics.Raycast(pickRay,out hit,rayDsitance))
+        pickRay = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+        
+        if(Physics.Raycast(pickRay,out hit,rayDistance, ignoreLayer))
         {
             //检测面前是否有可拾取物体，有则弹出拾取提示,开启描边
             if (hit.collider.CompareTag("PickObj"))
@@ -102,8 +102,9 @@ public class PickUp : MonoBehaviour
         {
             CloseOutline();
         }
-    }
-
+        Debug.DrawLine(pickRay.origin, pickRay.origin + pickRay.direction * rayDistance, Color.red);
+    }*/
+    /*//开启描边
     void OpenOutline(RaycastHit hit)
     {
         pickObj = hit.transform;
@@ -111,7 +112,7 @@ public class PickUp : MonoBehaviour
         outline.enabled = true;
         pickUI.SetActive(true);
     }
-
+    //关闭描边
     void CloseOutline()
     {
         pickObj = null;
@@ -126,5 +127,5 @@ public class PickUp : MonoBehaviour
             outline = null;
         }
         pickUI.SetActive(false);
-    }
+    }*/
 }
