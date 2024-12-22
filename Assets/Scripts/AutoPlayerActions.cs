@@ -3,147 +3,128 @@ using UnityEngine;
 
 public class AutoPlayerActions : MonoBehaviour
 {
-    public float moveSpeed = 10f;           // 角色的移动速度
-    public float shakeIntensity = 0.1f;      // 视角摇晃的强度
-    public float shakeDuration = 0.5f;       // 视角摇晃持续时间
-    public float fallSpeed = 1f;             // 倒下的速度
-    public float getUpSpeed = 1f;            // 起立的速度
+    public float moveSpeed = 10f;
+    public float shakeIntensity = 0.1f;
+    public float shakeDuration = 0.5f;
+    public float fallSpeed = 1f;
+    public float getUpSpeed = 1f;
     public float shakeFrequency = 0.5f;
 
     private Rigidbody rb;
     private Camera playerCamera;
-    private Vector3 originalCameraPosition;
-    private Vector3 moveDirection;
+    private Vector3 cameraOffset;
     private bool isFallen = false;
+    private bool allowInput = false; // 控制输入处理的标志
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
-        originalCameraPosition = playerCamera.transform.localPosition;
+        playerCamera.transform.SetParent(this.transform); // 将摄像机设为玩家的子对象
+        cameraOffset = playerCamera.transform.localPosition; // 记录初始相对偏移
 
-        // 自动执行所有动作
         StartCoroutine(AutoSequence());
+    }
+
+    void Update()
+    {
+        if (allowInput && !isFallen)
+        {
+            ProcessInput();
+        }
+    }
+
+    void ProcessInput()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+        rb.velocity = new Vector3(direction.x * moveSpeed, rb.velocity.y, direction.z * moveSpeed);
     }
 
     IEnumerator AutoSequence()
     {
-        // 1. 快速移动
+        Debug.Log("开始协程");
+        Debug.Log("禁用键盘");
+        // 禁用输入
+        allowInput = false;
+
         StartCoroutine(MovePlayer());
-        yield return new WaitForSeconds(0.5f); // 等待 2 秒
+        yield return new WaitForSeconds(0.5f);
 
-        // 2. 视角摇晃
-        StartCoroutine(ShakeCamera());
-        yield return new WaitForSeconds(shakeDuration); // 等待摇晃持续时间
+        yield return StartCoroutine(ShakeCamera());
+        yield return new WaitForSeconds(shakeDuration);
 
-        // 3. 倒下
-        StartCoroutine(FallDown());
-        yield return new WaitForSeconds(2.5f); // 等待 2 秒，让倒下动作完成
+        Debug.Log("开始倒下");
+        yield return StartCoroutine(FallDown());
 
-        // 4. 起立
-        StartCoroutine(GetUp());
-        yield return new WaitForSeconds(5f);
+        Debug.Log("开始起立");
+        yield return StartCoroutine(GetUp());
+
+        // 启用输入
+        allowInput = true;
+        Debug.Log("取消禁用");
     }
 
-    // 控制玩家移动
     IEnumerator MovePlayer()
     {
-        // 移动的方向
-        moveDirection = new Vector3(1, 0, 0).normalized; // 向右移动
+        Vector3 moveDirection = new Vector3(1, 0, 0).normalized;
 
-        // 执行移动
-        while (true)
+        while (!isFallen)
         {
-            if (isFallen) break; // 如果倒下则停止移动
             rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
             yield return null;
         }
     }
 
-    // 视角摇晃
     IEnumerator ShakeCamera()
     {
-        Vector3 originalPos = playerCamera.transform.localPosition;      // 获取初始位置
-        float remainingShakeDuration = shakeDuration;                     // 剩余的摇晃时间
-        float remainingShakeIntensity = shakeIntensity;                   // 初始强度
+        Vector3 originalPos = playerCamera.transform.localPosition;
+        float shakeTime = 0f;
 
-        // 频率控制，仍然按指定频率进行更新
-        float shakeInterval = 1f / shakeFrequency;
-        float timeSinceLastShake = 0f;
-
-        // 用于平滑插值的变量
-        Vector3 currentShakePosition = originalPos;                      // 当前摇晃位置
-        Vector3 targetShakePosition = originalPos;                       // 目标摇晃位置
-
-        // 使摇晃更平滑
-        while (remainingShakeDuration > 0)
+        while (shakeTime < shakeDuration)
         {
-            timeSinceLastShake += Time.deltaTime;
+            float currentShakeAmount = shakeIntensity * (1 - (shakeTime / shakeDuration));
+            Vector3 randomPoint = originalPos + Random.insideUnitSphere * currentShakeAmount;
+            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, randomPoint, Time.deltaTime * shakeFrequency);
 
-            // 如果已经到达更新频率的时机
-            if (timeSinceLastShake >= shakeInterval)
-            {
-                // 根据剩余时间动态调整摇晃强度
-                float currentShakeAmount = remainingShakeIntensity * (remainingShakeDuration / shakeDuration);
-
-                // 使用Random.insideUnitSphere创建一个新的目标摇晃位置
-                targetShakePosition = originalPos + Random.insideUnitSphere * currentShakeAmount;
-
-                // 使用 Lerp 或 SmoothDamp 来平滑过渡到目标位置
-                currentShakePosition = Vector3.Lerp(currentShakePosition, targetShakePosition, 0.2f);
-
-                // 重置时间
-                timeSinceLastShake = 0f;
-            }
-
-            // 更新摄像机位置为平滑过渡后的结果
-            playerCamera.transform.localPosition = currentShakePosition;
-
-            // 减少剩余时间
-            remainingShakeDuration -= Time.deltaTime;
-
+            shakeTime += Time.deltaTime;
             yield return null;
         }
 
-        // 最后恢复到原始位置
         playerCamera.transform.localPosition = originalPos;
     }
-    // 倒下动作
+
     IEnumerator FallDown()
     {
         isFallen = true;
-        Vector3 fallPosition = playerCamera.transform.position + new Vector3(0, -2, 0);
+        Vector3 fallPosition = cameraOffset + new Vector3(0, -2, 0);
+        float threshold = 0.01f; // 添加一个小的偏差值
 
-        while (playerCamera.transform.position.y > fallPosition.y)
+        while ((playerCamera.transform.localPosition - fallPosition).sqrMagnitude > threshold * threshold)
         {
-            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, fallPosition, fallSpeed * Time.deltaTime);
+            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, fallPosition, fallSpeed * Time.deltaTime);
             yield return null;
         }
 
-        playerCamera.transform.position = new Vector3(17, 2.6f, 21);
+        playerCamera.transform.localPosition = fallPosition;
+        Debug.Log("Falllllllllll");
     }
 
-    // 起立动作
     IEnumerator GetUp()
     {
+        Vector3 standPosition = cameraOffset;
+        float threshold = 0.01f; // 添加一个小的偏差值
+
+        while ((playerCamera.transform.localPosition - standPosition).sqrMagnitude > threshold * threshold)
+        {
+            playerCamera.transform.localPosition = Vector3.Lerp(playerCamera.transform.localPosition, standPosition, getUpSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        playerCamera.transform.localPosition = standPosition;
         isFallen = false;
-
-        // 设置恢复的目标位置
-        Vector3 standPosition = new Vector3(2, 0, 0);
-        // Vector3 currentPosition = playerCamera.transform.position;
-
-        // 防止“突然下降”的情况，先平滑调整 y 轴的目标
-        //while (currentPosition.y < standPosition.y)
-        //{
-        //    currentPosition.y = Mathf.MoveTowards(currentPosition.y, standPosition.y, getUpSpeed * Time.deltaTime);
-        //   playerCamera.transform.position = currentPosition;
-        //yield return null;
-        //  }
-
-        // 最后确保y轴位置已经完全恢复
-        //currentPosition.y = standPosition.y;
-        playerCamera.transform.position = standPosition;
-        Debug.Log("已启用起立");
-        yield return null;
+        Debug.Log("getuuuuuuuuuuup!");
     }
 }

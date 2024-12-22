@@ -7,8 +7,15 @@
       "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\autoplayeractions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\AutoPlayerActions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|D:\\unity\\DoDrug\\assets\\scripts\\interactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|d:\\unity\\dodrug\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BDE418E-399F-FEA5-977A-43E327B2FD15}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +25,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AutoPlayerActions.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\AutoPlayerActions.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\AutoPlayerActions.cs",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAHoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T02:35:43.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "D:\\unity\\DoDrug\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "D:\\unity\\DoDrug\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAYwC0AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T02:11:18.814Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -28,22 +59,23 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\AutoPlayerActions.cs",
               "ToolTip": "D:\\unity\\DoDrug\\Assets\\Scripts\\AutoPlayerActions.cs",
               "RelativeToolTip": "Assets\\Scripts\\AutoPlayerActions.cs",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAuwAAAAAAAAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAtwDAAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-21T12:33:38.665Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Interactive.cs",
               "DocumentMoniker": "D:\\unity\\DoDrug\\Assets\\Scripts\\Interactive.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Interactive.cs",
               "ToolTip": "D:\\unity\\DoDrug\\Assets\\Scripts\\Interactive.cs",
               "RelativeToolTip": "Assets\\Scripts\\Interactive.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAwAAAAAAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAiwAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T12:33:26.25Z"
+              "WhenOpened": "2024-12-21T12:33:26.25Z",
+              "EditorCaption": ""
             }
           ]
         }
