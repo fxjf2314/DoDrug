@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     //控制移动、跳跃速度大小
     public float moveSpeed, jumpSpeed;
     //控制下蹲时前进速度
-    float finalMoveSpeed;
+    public float finalMoveSpeed;
     //存储鼠标输入
     float horizon, vercital;
     Vector3 move, velocity;
