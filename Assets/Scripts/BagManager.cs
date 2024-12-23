@@ -24,7 +24,8 @@ public class BagManager : MonoBehaviour
 
     private void OnEnable()
     {
-        instance.itemInformation.text = "";
+        if (instance != null)
+            instance.itemInformation.text = "";
     }
     public static void RemoveItemSlot(Item itemToRemove)
     {
@@ -34,7 +35,7 @@ public class BagManager : MonoBehaviour
             if (currentSlot != null && currentSlot.slotItem == itemToRemove)
             {
                 Destroy(child.gameObject);
-                break; // 如果只有一个匹配项，找到后退出循环
+                break; 
             }
         }
     }

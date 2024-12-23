@@ -12,6 +12,19 @@ public class ItemOnWorld : MonoBehaviour
     {
         mybag.items.Clear();
     }
+    private void Update()
+    {
+        int playerLayerIndex = LayerMask.NameToLayer("Player");
+        if (gameObject.layer == playerLayerIndex)
+        {
+            Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+                rb.useGravity = false;
+            }
+        }
+    }
     public void AddNewItem()
     {
         if (!mybag.items.Contains(thisItem))

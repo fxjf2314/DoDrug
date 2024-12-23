@@ -19,6 +19,5 @@ public class GetAItem : MonoBehaviour
         bagObj.gameObject.SetActive(true);
         myHandObj.handObj = bagObj;
         inHandObj = bagObj;
-
     }
 }
