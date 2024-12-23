@@ -10,6 +10,7 @@ public class Interactive : PickAndInteractiveFather
     public InteractiveEventDelegate eventRotateWall;
     public InteractiveEventDelegate eventDoPuzzle;
     public InteractiveEventDelegate eventTurnOnLight;
+    public InteractiveEventDelegate eventMoveDrawer;
     public Transform rotateWall;
 
     public Bag myBag;
@@ -31,14 +32,17 @@ public class Interactive : PickAndInteractiveFather
         GetPickObj();
         if (Input.GetKeyDown(KeyCode.G) && pickObj != null)
         {
-            if(pickObj.name == "StudioLight")
-            {
+            
                 eventTurnOnLight?.Invoke();
-            }
-            if (pickObj.name == "StatuePos")
-            {
+            
+            
                 eventDoPuzzle?.Invoke();
-            }
+            
+            
+            
+                eventMoveDrawer?.Invoke();
+            
+            
 
         }
     }

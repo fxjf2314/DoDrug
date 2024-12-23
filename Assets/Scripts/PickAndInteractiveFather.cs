@@ -8,7 +8,7 @@ public abstract class PickAndInteractiveFather : MonoBehaviour
     public Camera Cam;
     protected Ray pickRay;
     
-    public Transform pickObj;
+    public static Transform pickObj;
     public RaycastHit hit;
     protected float rayDistance = 2;
     protected int ignoreLayer;
