@@ -10,6 +10,7 @@ public class GetAItem : MonoBehaviour
     
     public void buttonOnClicked()
     {
+        if (bagObj == null) bagObj = inHandObj;
         myHandObj = GameObject.Find("Main Camera").GetComponent<PickUp>();
         if(inHandObj != null )
         {

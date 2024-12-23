@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f917494e23d8c249b227af27db8c9a4, type: 3}
-  m_Name: MyBag
+  m_Script: {fileID: 11500000, guid: de6c8a37d784f9748aed52e102392901, type: 3}
+  m_Name: Pillow
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 979a6e0138559a746914e4e6fdff34f8, type: 2}
+  itemName: pillow
+  itemImage: {fileID: 21300000, guid: 887f1e29d33845b45807285bfe9998ab, type: 3}
+  itemText: pillow
+  itemType: 3

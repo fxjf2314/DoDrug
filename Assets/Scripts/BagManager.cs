@@ -13,8 +13,8 @@ public class BagManager : MonoBehaviour
     public GameObject slotGrid;
     public Slot slot;
     public TextMeshProUGUI itemInformation;
-    public List<Slot> grids=new List<Slot>();
-
+    public List<Slot> grids = new List<Slot>();
+    public TextMeshProUGUI tips;
     void Awake()
     {
         if (instance != null)
