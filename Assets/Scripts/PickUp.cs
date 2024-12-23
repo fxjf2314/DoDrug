@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ public class PickUp : PickAndInteractiveFather
         handObj = null;
         handEmpty = true;
         //设置要忽略的层级
-        
+
     }
 
     ////检测面前是否有物体，有则弹出拾取提示,开启描边
@@ -63,6 +64,18 @@ public class PickUp : PickAndInteractiveFather
         //按f拾取面前物体到手中
         if (Input.GetKeyDown(KeyCode.F) && pickObj != null)
         {
+            // 假设你有一个fileID
+            int fileID = 725788386;
+
+            // 获取对应的GameObject
+            GameObject go = EditorUtility.InstanceIDToObject(fileID) as GameObject;
+
+            // 检查GameObject是否有效
+            if (go != null)
+            {
+                // 处理GameObject，例如打印其名称
+                Debug.Log(go.name);
+            }
             if (!handEmpty)
             {
                 handObj.gameObject.SetActive(false);

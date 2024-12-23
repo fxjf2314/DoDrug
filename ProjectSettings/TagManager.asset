@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PickObj
   - InteractiveObj
+  - chair
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ public class Interactive : PickAndInteractiveFather
     public InteractiveEventDelegate eventRotateWall;
     public InteractiveEventDelegate eventDoPuzzle;
     public InteractiveEventDelegate eventTurnOnLight;
+    public InteractiveEventDelegate eventSitOnObject;
+    public InteractiveEventDelegate eventMBDoorOpen;
     public Transform rotateWall;
 
     public Bag myBag;
@@ -22,7 +24,6 @@ public class Interactive : PickAndInteractiveFather
         tagName = "InteractiveObj";
         
         base.Awake();
-
 
     }
 
@@ -39,7 +40,14 @@ public class Interactive : PickAndInteractiveFather
             {
                 eventDoPuzzle?.Invoke();
             }
-
+            if(pickObj.name=="sofa2")
+            {
+                eventSitOnObject?.Invoke();
+            }
+            if(pickObj.name=="MBDoor")
+            {
+                eventMBDoorOpen?.Invoke();
+            }
         }
     }
 
