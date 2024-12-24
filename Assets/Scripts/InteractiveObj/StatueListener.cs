@@ -33,7 +33,9 @@ public class StatusListener : Listener//µñÏñ¼àÌý
     {
         if (PickAndInteractiveFather.pickObj.name == transform.name)
         {
+
             if (pickUpObj.handObj != null)
+
             {
                 handObjs = pickUpObj.handObj.gameObject;
                 Transform childrenObject = transform.Find("statue");
@@ -58,6 +60,7 @@ public class StatusListener : Listener//µñÏñ¼àÌý
                     }
                 }
             }
+
         }
  
     }

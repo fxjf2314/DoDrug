@@ -13,7 +13,8 @@ public class PickUp : PickAndInteractiveFather
     public Vector3 handPos;
     public TextMeshProUGUI tips;
     //pickObj物体的描边组件
-
+    Rigidbody rb;
+    
 
     protected override void Awake()
     {
@@ -71,9 +72,11 @@ public class PickUp : PickAndInteractiveFather
                     handObj.gameObject.SetActive(false);
                 }
                 handObj = pickObj;
+                rb = handObj.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezeAll;
                 GetAItem.inHandObj = handObj;
                 handObj.GetComponent<ItemOnWorld>().AddNewItem();
-                handObj.gameObject.layer = LayerMask.NameToLayer("Player");
+                ChangeLayer(handObj);
                 //设置transform参数确保手中物品角度正确不挡视野
                 handObj.SetParent(Cam.transform);
                 handObj.localEulerAngles = Vector3.zero;
@@ -86,6 +89,18 @@ public class PickUp : PickAndInteractiveFather
             {
                 tips.gameObject.SetActive(true);
             }
+            //handObj = pickObj;
+        }
+    }
+
+    void ChangeLayer(Transform handObj)
+    {
+        handObj.gameObject.layer = LayerMask.NameToLayer("Player");
+        for (int i = 0; i < handObj.childCount; i++)
+        {
+            Transform child = handObj.GetChild(i);
+            child.gameObject.layer = LayerMask.NameToLayer("Player");
+            ChangeLayer(child);
         }
     }
 

@@ -11,7 +11,6 @@ public class AutoPlayerActions : MonoBehaviour
 
     private Camera playerCamera;
     private Vector3 cameraOffset;
-    
 
     private PlayerController playerController; // ÒýÓÃ PlayerController
 
@@ -79,7 +78,7 @@ public class AutoPlayerActions : MonoBehaviour
 
     IEnumerator FallDown()
     {
-        
+
         Vector3 fallPosition = cameraOffset + new Vector3(0, -1.5f, 0);
         float threshold = 0.01f;
 
@@ -104,7 +103,7 @@ public class AutoPlayerActions : MonoBehaviour
         }
 
         playerCamera.transform.localPosition = standPosition;
-        
+
     }
 
     void DisablePlayerControl()
