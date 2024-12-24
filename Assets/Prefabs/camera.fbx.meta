@@ -3,7 +3,17 @@ guid: 975038e2238662b45af724b2a6566ca0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: security_camera_02
+    second: {fileID: 2100000, guid: d78aaf93dbf84a848842282e2998e97a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: security_camera_02_glass
+    second: {fileID: 2100000, guid: d78aaf93dbf84a848842282e2998e97a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
