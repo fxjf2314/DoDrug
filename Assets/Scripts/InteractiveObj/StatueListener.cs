@@ -22,7 +22,7 @@ public class StatusListener : Listener//µñÏñ¼àÌý
         if(pickUpObj.handObj != null)
         {
             handObjs = pickUpObj.handObj.gameObject;
-            Transform childrenObject = transform.Find("statue");
+            Transform childrenObject = transform.Find("cutting board");
             if (childrenObject != null)
             {
                 Transform grandChildrenObject = childrenObject.Find(handObjs.name);
@@ -43,9 +43,6 @@ public class StatusListener : Listener//µñÏñ¼àÌý
                     tips.gameObject.SetActive(true);
                 }
             }
-        }
-       
-
-        
+        }        
     }
 }

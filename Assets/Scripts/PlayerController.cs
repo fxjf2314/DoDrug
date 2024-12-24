@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         camPos = mainCam.transform.localPosition;
         cameraCrouch = null;
         isCanStand = true;
+        nextFrameStand = false;
     }
 
 
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                nextFrameStand = true;
+                nextFrameStand = true;//下一帧起立
             }
         }
         else if (isCrouch && isCanStand && nextFrameStand)
@@ -155,8 +156,8 @@ public class PlayerController : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(headCheck.position, headCheck.localScale / 2);
         foreach (Collider collider in colliders)
         {
-            //忽略角色自身和所有子集碰撞体
-            if (!collider.transform.IsChildOf(transform))
+            //忽略角色自身和所有子集碰撞体,忽略SceneTrigger
+            if (!collider.transform.IsChildOf(transform) && collider.gameObject.layer != LayerMask.NameToLayer("SceneTrigger"))
             {
                 return false;
             }

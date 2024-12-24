@@ -13,14 +13,17 @@ public class LightListener : Listener
 
     protected override void Dosomething()
     {
-        Transform childrenObject = transform.Find("light");
-        if (childrenObject != null)
+        if(PickAndInteractiveFather.pickObj.name == transform.name)
         {
-            Transform grandChildrenObject = childrenObject.Find("CommonLight");
-            if (grandChildrenObject != null)
+            Transform childrenObject = transform.Find("light");
+            if (childrenObject != null)
             {
-                GameObject isLight = grandChildrenObject.gameObject;
-                isLight.SetActive(true);
+                Transform grandChildrenObject = childrenObject.Find("CommonLight");
+                if (grandChildrenObject != null)
+                {
+                    GameObject isLight = grandChildrenObject.gameObject;
+                    isLight.SetActive(true);
+                }
             }
         }
     }
