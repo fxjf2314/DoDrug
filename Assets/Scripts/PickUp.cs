@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,8 +15,8 @@ public class PickUp : PickAndInteractiveFather
     public TextMeshProUGUI tips;
     //pickObj物体的描边组件
     Rigidbody rb;
-    
 
+    
     protected override void Awake()
     {
         tagName = "PickObj";
@@ -67,7 +68,7 @@ public class PickUp : PickAndInteractiveFather
         {
             if (pickObj.GetComponent<ItemOnWorld>().mybag.items.Count < 6)
             {
-                if (!handEmpty)
+                if (!handEmpty && handObj != null)
                 {
                     handObj.gameObject.SetActive(false);
                 }
@@ -88,6 +89,7 @@ public class PickUp : PickAndInteractiveFather
             else
             {
                 tips.gameObject.SetActive(true);
+                StartCoroutine(DisappearUI(tips));
             }
             //handObj = pickObj;
         }
@@ -104,6 +106,18 @@ public class PickUp : PickAndInteractiveFather
         }
     }
 
+    public float delayTime = 1f; // 延迟时间，单位为秒
+
+    // 在Start中开始协程
+
+    // 协程函数，用于延迟UI的消失
+    IEnumerator DisappearUI(TextMeshProUGUI tips)
+    {
+        // 等待指定的时间
+        yield return new WaitForSeconds(delayTime);
+        // 时间过后，将UI游戏对象设置为不激活，从而消失
+        tips.gameObject.SetActive(false);
+    }
     /*void GetPickObj()
     {
         //从视角发射一条射线

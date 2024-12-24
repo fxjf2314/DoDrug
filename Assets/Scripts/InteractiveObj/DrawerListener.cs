@@ -28,7 +28,7 @@ public class DrawerListener : Listener
            
     }
 
-    private IEnumerator SmoothMove()
+    protected IEnumerator SmoothMove()
     {
         while (elapsedTime < duration)
         {
