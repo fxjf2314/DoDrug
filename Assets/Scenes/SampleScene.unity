@@ -19812,7 +19812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa5353db4ac8bab4b92650ca5f1f662a, type: 3}
       propertyPath: m_Name
-      value: Cup_tea-s
+      value: Tea
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fa5353db4ac8bab4b92650ca5f1f662a, type: 3}
       propertyPath: m_IsActive
