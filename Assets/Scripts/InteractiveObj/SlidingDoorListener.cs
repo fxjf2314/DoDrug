@@ -15,7 +15,7 @@ public class SlidingDoorListener : DrawerListener
 
     protected override void Dosomething()
     {
-        if(pickUpObj.handObj != null && pickUpObj.handObj.name == transform.name)
+        if(pickUpObj.handObj != null && pickUpObj.handObj.name == PickAndInteractiveFather.pickObj.name)
         {
             base.Dosomething();
             Destroy(pickUpObj.handObj.gameObject);
