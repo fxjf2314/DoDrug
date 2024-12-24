@@ -16,6 +16,8 @@ public class Interactive : PickAndInteractiveFather
     public InteractiveEventDelegate eventMakeTea;
     public InteractiveEventDelegate eventPutPot;
 
+    public InteractiveEventDelegate eventSitOnObject;
+    public InteractiveEventDelegate eventMBDoorOpen;
     public InteractiveEventDelegate eventMoveDrawer;
 
     public Transform rotateWall;
@@ -68,8 +70,16 @@ public class Interactive : PickAndInteractiveFather
             
             
                 eventMoveDrawer?.Invoke();
-            
-            
+            if (pickObj.name == "sofa2")
+            {
+                eventSitOnObject?.Invoke();
+            }
+            if (pickObj.name == "MBDoor" || pickObj.name == "MBDoor1")
+            {
+                eventMBDoorOpen?.Invoke();
+            }
+
+
 
 
         }
