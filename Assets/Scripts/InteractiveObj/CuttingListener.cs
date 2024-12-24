@@ -46,8 +46,10 @@ public class CuttingListener : Listener
                 pickUpScript.handEmpty = true;
                 flower.SetParent(transform);
                 //设置位置
-                flower.localPosition = new Vector3(0, 0, 0.0007f);
-                
+                flower.localPosition = new Vector3(-1.120478e-05f, -0.0003f, 0.041f);
+                flower.localEulerAngles = new Vector3(98.47299f, -84.793f, -88.49298f);
+                flower.gameObject.layer = LayerMask.NameToLayer("Defalut");
+
             }
             else if(handObj.name == "Knife" && transform.Find("Flor Pet"))//手中物品是菜刀且案板上有花瓣则将花瓣摧毁，花粉激活
             {

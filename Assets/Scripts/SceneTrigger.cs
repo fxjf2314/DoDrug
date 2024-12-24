@@ -41,7 +41,7 @@ public class SceneTrigger : MonoBehaviour
         {
             fademode = false;
             Fadeout();
-            Invoke("Fadein", 2.00f);
+            
         }
     }
 
@@ -61,7 +61,7 @@ public class SceneTrigger : MonoBehaviour
 
     private void Fadeout()
     {
-        if (color.a < 1 && !fademode)
+        if (color.a < 1.2 && !fademode)
         {
             Triggertext.text = transform.name;
 

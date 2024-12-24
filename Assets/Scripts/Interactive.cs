@@ -10,10 +10,14 @@ public class Interactive : PickAndInteractiveFather
     public InteractiveEventDelegate eventRotateWall;
     public InteractiveEventDelegate eventDoPuzzle;
     public InteractiveEventDelegate eventTurnOnLight;
+
     //把花放到案板上
     public InteractiveEventDelegate eventPutFlower;
     public InteractiveEventDelegate eventMakeTea;
     public InteractiveEventDelegate eventPutPot;
+
+    public InteractiveEventDelegate eventMoveDrawer;
+
     public Transform rotateWall;
 
     public Bag myBag;
@@ -36,6 +40,7 @@ public class Interactive : PickAndInteractiveFather
         if (Input.GetKeyDown(KeyCode.G) && pickObj != null)
         {
             
+
             eventTurnOnLight?.Invoke();
             
             if (pickObj.name == "StatuePos")
@@ -54,6 +59,19 @@ public class Interactive : PickAndInteractiveFather
             {
                 eventMakeTea?.Invoke();
             }
+
+                eventTurnOnLight?.Invoke();
+            
+            
+                eventDoPuzzle?.Invoke();
+            
+            
+            
+                eventMoveDrawer?.Invoke();
+            
+            
+
+
         }
     }
 

@@ -10,7 +10,7 @@ public abstract class PickAndInteractiveFather : MonoBehaviour
     
     public static Transform pickObj;
     public RaycastHit hit;
-    protected float rayDistance = 2;
+    protected float rayDistance = 3;
     protected int ignoreLayer;
     protected string tagName;
     protected Outline outline;
