@@ -52,7 +52,7 @@ public class SceneTrigger : MonoBehaviour
         if (color.a > 0)
         {
 
-            color.a = color.a - 0.02f;
+            color.a = color.a - 0.04f;
             Triggertext.color = color;
             Invoke("Fadein", 0.03f);
         }
@@ -65,7 +65,7 @@ public class SceneTrigger : MonoBehaviour
         {
             Triggertext.text = transform.name;
 
-            color.a = color.a + 0.02f;
+            color.a = color.a + 0.04f;
             Triggertext.color = color;
             Invoke("Fadeout", 0.03f);
         }
