@@ -15,15 +15,20 @@ public class RotationListener : Listener
         base.Start();
         somethingScript = objWithInteractive.GetComponent<Interactive>();
         somethingScript.eventRotateWall += Dosomething;
+
     }
 
     
 
     protected override void Dosomething()
     {
-        // 调用旋转方法，每次旋转后更新总旋转角度
-        RotateAroundYAxis(totalRotation, duration);
-        totalRotation += rotationAngle;
+        if (PickAndInteractiveFather.pickObj.name == transform.name)
+        {
+            RotateAroundYAxis(totalRotation, duration);
+            totalRotation += rotationAngle;
+        }
+            // 调用旋转方法，每次旋转后更新总旋转角度
+           
     }
 
     private void RotateAroundYAxis(float totalAngle, float duration)

@@ -14,7 +14,6 @@ public class BagManager : MonoBehaviour
     public Slot slot;
     public TextMeshProUGUI itemInformation;
     public List<Slot> grids = new List<Slot>();
-    public TextMeshProUGUI tips;
     void Awake()
     {
         if (instance != null)
