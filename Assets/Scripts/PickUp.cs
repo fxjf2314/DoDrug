@@ -67,7 +67,7 @@ public class PickUp : PickAndInteractiveFather
         {
             if (pickObj.GetComponent<ItemOnWorld>().mybag.items.Count < 6)
             {
-                if (!handEmpty)
+                if (!handEmpty && handObj != null)
                 {
                     handObj.gameObject.SetActive(false);
                 }

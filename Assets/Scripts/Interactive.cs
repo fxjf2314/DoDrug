@@ -49,18 +49,18 @@ public class Interactive : PickAndInteractiveFather
             {
                 eventDoPuzzle?.Invoke();
             }
-            if(pickObj.name == "cuttingboard")
-            {
-                eventPutFlower?.Invoke();
-            }
-            if (pickObj.name == "kitchen")
-            {
-                eventPutPot?.Invoke();
-            }
-            if (pickObj.name == "Pot")
-            {
-                eventMakeTea?.Invoke();
-            }
+            
+            
+            eventPutFlower?.Invoke();
+            
+            
+            
+            eventPutPot?.Invoke();
+            
+            
+            
+            eventMakeTea?.Invoke();
+            
 
                 //eventTurnOnLight?.Invoke();
             
