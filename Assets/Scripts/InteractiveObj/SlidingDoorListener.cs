@@ -17,8 +17,8 @@ public class SlidingDoorListener : DrawerListener
     {
         if(pickUpObj.handObj != null && pickUpObj.handObj.name == PickAndInteractiveFather.pickObj.name)
         {
-            base.Dosomething();
-            
+            StartCoroutine(SmoothMove());
+
             Destroy(pickUpObj.handObj.gameObject);
             myBag.items.Remove(pickUpObj.handObj.gameObject.GetComponent<ItemOnWorld>().thisItem);
             BagManager.RemoveItemSlot(pickUpObj.handObj.gameObject.GetComponent<ItemOnWorld>().thisItem);

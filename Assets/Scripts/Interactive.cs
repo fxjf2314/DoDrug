@@ -45,10 +45,7 @@ public class Interactive : PickAndInteractiveFather
 
             eventTurnOnLight?.Invoke();
             
-            if (pickObj.name == "StatuePos")
-            {
-                eventDoPuzzle?.Invoke();
-            }
+            
             if(pickObj.name == "cuttingboard")
             {
                 eventPutFlower?.Invoke();
@@ -74,7 +71,7 @@ public class Interactive : PickAndInteractiveFather
             {
                 eventSitOnObject?.Invoke();
             }
-            if (pickObj.name == "MBDoor" || pickObj.name == "MBDoor1")
+            if (pickObj.name == "MBDoor" || pickObj.name == "MBDoor1"||pickObj.name=="StudioDoor")
             {
                 eventMBDoorOpen?.Invoke();
             }
