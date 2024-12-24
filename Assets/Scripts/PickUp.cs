@@ -11,9 +11,10 @@ public class PickUp : PickAndInteractiveFather
     public bool handEmpty;
     public Transform handObj;
     public Vector3 handPos;
+    public TextMeshProUGUI tips;
     //pickObj物体的描边组件
-    
-    
+
+
     protected override void Awake()
     {
         tagName = "PickObj";
@@ -63,21 +64,28 @@ public class PickUp : PickAndInteractiveFather
         //按f拾取面前物体到手中
         if (Input.GetKeyDown(KeyCode.F) && pickObj != null)
         {
-            if (!handEmpty)
+            if (pickObj.GetComponent<ItemOnWorld>().mybag.items.Count < 6)
             {
-                handObj.gameObject.SetActive(false);
+                if (!handEmpty)
+                {
+                    handObj.gameObject.SetActive(false);
+                }
+                handObj = pickObj;
+                GetAItem.inHandObj = handObj;
+                handObj.GetComponent<ItemOnWorld>().AddNewItem();
+                handObj.gameObject.layer = LayerMask.NameToLayer("Player");
+                //设置transform参数确保手中物品角度正确不挡视野
+                handObj.SetParent(Cam.transform);
+                handObj.localEulerAngles = Vector3.zero;
+                handObj.localPosition = handPos;
+                //关闭描边
+                CloseOutline();
+                handEmpty = false;
             }
-            handObj = pickObj;
-            GetAItem.inHandObj = handObj;
-            handObj.GetComponent<ItemOnWorld>().AddNewItem();
-            handObj.gameObject.layer = LayerMask.NameToLayer("Player");
-            //设置transform参数确保手中物品角度正确不挡视野
-            handObj.SetParent(Cam.transform);
-            handObj.localEulerAngles = Vector3.zero;
-            handObj.localPosition = handPos;
-            //关闭描边
-            CloseOutline();
-            handEmpty = false;
+            else
+            {
+                tips.gameObject.SetActive(true);
+            }
         }
     }
 

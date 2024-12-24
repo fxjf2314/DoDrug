@@ -3578,7 +3578,6 @@ GameObject:
   - component: {fileID: 1703242879}
   - component: {fileID: 1703242878}
   - component: {fileID: 1703242877}
-  - component: {fileID: 1703242876}
   - component: {fileID: 1703242883}
   m_Layer: 5
   m_Name: settings
@@ -3587,18 +3586,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1703242876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703242875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7a8cb7bb0730e46a88ed8151416dfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1703242877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4091,7 +4078,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891224602}
-  - component: {fileID: 1891224601}
   m_Layer: 0
   m_Name: DoorManager
   m_TagString: Untagged
@@ -4099,18 +4085,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1891224601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891224600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91742b890ed4fc0439b8ca8e829cbbf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1891224602
 Transform:
   m_ObjectHideFlags: 0
@@ -4455,7 +4429,6 @@ GameObject:
   - component: {fileID: 2078749115}
   - component: {fileID: 2078749114}
   - component: {fileID: 2078749113}
-  - component: {fileID: 2078749116}
   - component: {fileID: 2078749117}
   m_Layer: 5
   m_Name: main menu
@@ -4549,18 +4522,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &2078749116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078749111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8473a40086d2578418ed42ea09d4fad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2078749117
 MonoBehaviour:
   m_ObjectHideFlags: 0
