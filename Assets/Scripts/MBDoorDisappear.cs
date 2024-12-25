@@ -34,8 +34,7 @@ public class MBDoorDisappear : Listener
     protected override void Dosomething()
     {
         // 检查玩家手中是否持有特定物品
-        if (pickUpObj != null && pickUpObj.handObj != null &&
-            pickUpObj.handObj.name == requiredItemName)
+        if (pickUpObj != null && pickUpObj.handObj != null && pickUpObj.handObj.name == requiredItemName && PickAndInteractiveFather.pickObj.name == transform.name)
         {
             Debug.Log("The door is disappearing...");
 

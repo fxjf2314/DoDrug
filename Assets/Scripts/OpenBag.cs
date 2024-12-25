@@ -39,7 +39,7 @@ public class OpenBag : MonoBehaviour
         {
             isOpen = !mybag.activeSelf;
             mybag.SetActive(isOpen);
-            Cursor.visible = true;
+            Cursor.visible = isOpen;
         }
     }
 }

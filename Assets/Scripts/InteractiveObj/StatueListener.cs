@@ -56,7 +56,7 @@ public class StatusListener : Listener//µñÏñ¼àÌý
                     }
                     else
                     {   
-                        tips.text = "This object should not be placed here";
+                        tips.text = "This statue need piece of it";
                         tips.gameObject.SetActive(true);
                         StartCoroutine(DisappearUIfunc.DisappearUI(tips));
                     }
