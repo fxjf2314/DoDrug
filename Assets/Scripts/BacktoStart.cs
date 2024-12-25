@@ -5,17 +5,35 @@ using UnityEngine;
 public class BacktoStart : MonoBehaviour
 {
     public Transform startPos;
-    
+    public Transform finalPos;
+    private PickUp finalObj;
+
+    private void Start()
+    {
+        finalObj = GameObject.Find("Main Camera").GetComponent<PickUp>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") )
         {
-            CharacterController playerController = other.GetComponent<CharacterController>();
-            playerController.enabled = false;
-            other.transform.position = startPos.position;
-            playerController.enabled = true;
+            if(finalObj.handObj == null || finalObj.handObj.name != "Tea")
+            {
+                CharacterController playerController = other.GetComponent<CharacterController>();
+                playerController.enabled = false;
+                other.transform.position = startPos.position;
+                playerController.enabled = true;
+            }
+            else
+            {
+                CharacterController playerController = other.GetComponent<CharacterController>();
+                playerController.enabled = false;
+                other.transform.position = finalPos.position;
+                playerController.enabled = true;
+            }
+            
             
         }
     }

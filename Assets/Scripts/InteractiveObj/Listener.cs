@@ -9,8 +9,8 @@ public abstract class Listener : MonoBehaviour
     protected virtual void Start()
     {
         objWithInteractive = GameObject.Find("Main Camera");
-
         
+
     }
 
     protected abstract void Dosomething();

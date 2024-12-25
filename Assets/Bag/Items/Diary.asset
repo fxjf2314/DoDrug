@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: diary
   itemImage: {fileID: 21300000, guid: 7643507f0e20c3c41be0d72f8affebfc, type: 3}
-  itemText: rijiben
+  itemText: 'Water in pot first ,then the pollen '
   itemType: 0

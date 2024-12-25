@@ -13,6 +13,21 @@ public class TVListener : LightListener
         pickUpObj = objWithInteractive.GetComponent<PickUp>();
 
     }
+    private void Update()
+    {
+        if (pickUpObj.handObj != null) 
+        {
+            if (pickUpObj.handObj.name == transform.name)
+            {
+                transform.tag = "InteractiveObj";
+            }
+            else
+            {
+                transform.tag = "Untagged";
+            }
+        }
+        
+    }
 
     protected override void Dosomething()
     {

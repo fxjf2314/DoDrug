@@ -8,8 +8,8 @@ public class DrawerListener : Listener
     public float duration = 1.0f; // 移动持续时间，单位秒
     public Vector3 moveDirection = Vector3.forward; // 移动的方向，默认向前
 
-    private Vector3 startPosition; // 起始位置
-    private float elapsedTime = 0f;
+    protected Vector3 startPosition; // 起始位置
+    protected float elapsedTime = 0f;
 
     protected override void Start()
     {
@@ -41,6 +41,7 @@ public class DrawerListener : Listener
 
         // 确保移动到精确的位置
         transform.position = startPosition + moveDirection * moveDistance;
+        transform.GetComponent<BoxCollider>().enabled = false;
         transform.tag = "Untagged";
     }
 }
